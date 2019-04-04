@@ -1,9 +1,11 @@
 
 // filename ******** Main.C ************** 
 
+
+
 //***********************************************************************
-// Simple ADC example for the Technological Arts EsduinoXtreme board
-// by Carl Barnes, 12/03/2014
+//    2DP4 Final Project
+//    Ahmed Fuad Ali, alia78, 400075937
 //***********************************************************************
 
 #include <hidef.h>      /* common defines and macros */
@@ -114,17 +116,14 @@ void main(void) {           // this is our main function ----------------------
   
   
 
-  //SCI_OutString("Ahmed Fuad Ali 400075937"); OutCRLF();
   for(;;) {
   
     if((PTM & 0b01)==0b01){    // detect start serial being pressed
     
       if(communicate == 0){
-        //SCI_OutString("You STARTED serial communication"); OutCRLF();
         delay1ms(500);
         communicate = 1;
       } else if (communicate ==1){
-        //SCI_OutString("You ENDED serial communication"); OutCRLF();
         delay1ms(500);
         communicate = 0;
       }
@@ -133,12 +132,8 @@ void main(void) {           // this is our main function ----------------------
     if((PTM & 0b10) == 0b10){      // toggle modes
       if(mode==9 || mode == 1){
         mode = 0;
-        //SCI_OutString("You ENTERED mode 0"); OutCRLF();
-
       } else if(mode==0){
         mode = 1;
-        //SCI_OutString("You ENTERED mode 1"); OutCRLF();
-
       }
       delay1ms(500);
 
@@ -148,8 +143,6 @@ void main(void) {           // this is our main function ----------------------
       // start serial
       
       val = ATDDR0;
-      //SCI_OutString("Our raw value = ");
-      //SCI_OutUDec(val); OutCRLF();
       
       if (val > 531 && val < 602){
         // now get angle and display actual value
@@ -171,10 +164,8 @@ void main(void) {           // this is our main function ----------------------
 
       // now start processing BCD                 BCD ---------------
       
-      //SCI_OutString("Our angle in mode 0 = ");
       castedangle = angle;
       SCI_OutUDec(castedangle); OutCRLF();      
-      //delay1ms(500); // delay for half a second 
       
       
       
@@ -281,8 +272,6 @@ void main(void) {           // this is our main function ----------------------
       */ 
 
       val = ATDDR0;
-      //SCI_OutString("Our raw value = ");
-      //SCI_OutUDec(val); OutCRLF();
       
       if (val > 531 && val < 602){
         // now get angle and display actual value
